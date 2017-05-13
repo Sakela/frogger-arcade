@@ -1,20 +1,24 @@
-frontend-nanodegree-arcade-game
-===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
-
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
-
-## About Project
+# About Project
 
 This project is created within Udacity's Front End NanoDegree course. Applied **OOP Javascript paradigm** to recreate old arcade game called Frogger.
 
-### How To Run The Game
-Fork or download this repository and open index.html file with any browser of your choice.
-
-### How To Play
-To move the character on the screen use the keyboard keys:
+## How To Run The Game
+Clone or download [this](https://github.com/Sakela/frogger-arcade) repository. Navigate to the downloaded folder and open index.html file with your browser.
+To clone repository, open the terminal and type command below
 
 ```
-
+$ git clone https://github.com/Sakela/frogger-arcade
 ```
+
+## How To Play
+To begin the game you need to choose the character by clicking on the image. Read the rules and explanation of how points added and lost in the game.
+To move the character on the screen use the keyboard keys as in the image below:
+
+![alt](http://jbruckner.com/puzzle-fighter/img/arrow-keys-icon.svg)
+
+The goal of the game is to reach the top of the game screen (*water blocks*) and avoid collision with bugs. From time to time you will see loot drop on the game screen. To collect the loot you need to get the player on the same block. Loot give you **3 additional points** while reaching the water line gives you **1 point each time**. To reset the game and choose another character or start over, hit refresh button in your browser window.
+
+### License
+
+MIT
