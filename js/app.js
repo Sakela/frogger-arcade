@@ -35,6 +35,8 @@ Enemy.prototype.render = function(dt) {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+//Method to check collisions between enemy and player
+//Also resets player score to 0
 Enemy.prototype.checkCollisions = function() {
     var diffX = this.x - player.x;
     var diffY = this.y - player.y;
@@ -44,7 +46,7 @@ Enemy.prototype.checkCollisions = function() {
         player.reset();
         player.score = 0;
     }
-}
+};
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -62,17 +64,18 @@ Player.prototype.reset = function() {
 };
 
 Player.prototype.update = function(dt) {
-    //Reset player's position after setting .col and .row key values to default
     if(this.y < 0) {
         this.reset();
         this.score++;
     }
 };
 
+//Renders player image on the canvas
 Player.prototype.render = function(dt) {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+//Required method for the player character to move on the canvas
 Player.prototype.handleInput =  function(input) {
     if ( player.sprite !== undefined ) {
         switch(input) {
@@ -103,9 +106,9 @@ Player.prototype.handleInput =  function(input) {
 //This class is setting properties and methods for Extras(Loot) objects that will appear as bonus points.
 var Loot = function() {
     this.reset();
-
 };
 
+//Reset method for Loot class, that randomly locates it on the canvas
 Loot.prototype.reset = function() {
     this.x = 101 * getRandomNum(0,4);
     this.y = 83 * getRandomNum(1,3);
@@ -113,15 +116,15 @@ Loot.prototype.reset = function() {
 };
 
 Loot.prototype.update = function(){
-    // allLoot.forEach(function(loot) {
-        loot.render();
-    // });
+    loot.render();
 };
 
+//Renders Loot image on the canvas
 Loot.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+//Method to check collisions between loot and player
 Loot.prototype.checkCollisions = function() {
     var diffX = this.x - player.x;
     var diffY = this.y - player.y;
@@ -129,20 +132,18 @@ Loot.prototype.checkCollisions = function() {
     if (distance < 50) {
         this.x = -100;
         setTimeout(function(){
-            // allLoot.forEach(function(loot) {
-                loot.getRandomLoot();
-                loot.reset();
-            // });
+            loot.getRandomLoot();
+            loot.reset();
         }, getRandomNum(4000, 9000));
         player.score += 3;
     }
 };
 
+//Method to generate random loot image from allLoot array
 Loot.prototype.getRandomLoot = function() {
     var instance = allLoot[Math.floor(Math.random() * allLoot.length)];
     return instance;
-    console.log(instance);
-}
+};
 
 //Get random whole number and use it with methods of objects
 function getRandomNum(min, max) {

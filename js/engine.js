@@ -29,7 +29,7 @@ var Engine = (function(global) {
     canvas.height = 606;
     doc.body.appendChild(canvas);
 
-    //store player.score into created DOM element
+    //Create DOM element to store player's score and set its style
     var scoreboard = document.createElement("H3");
     scoreboard.className += "darkgray-white-center";
     scoreboard.style.maxWidth = "100px";
@@ -156,24 +156,20 @@ var Engine = (function(global) {
      * tick. Its purpose is to then call the render functions you have defined
      * on your enemy and player entities within app.js
      */
-    function renderEntities() {
-        /* Loop through all of the objects within the allEnemies array and call
+     function renderEntities() {
+         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
-        allEnemies.forEach(function(enemy) {
-            enemy.render();
-        });
+         allEnemies.forEach(function(enemy) {
+             enemy.render();
+         });
 
-        // allLoot.forEach(function(loot) {
-            loot.render();
-        // });
+         loot.render();
 
-        player.render();
-    }
+         player.render();
+     }
 
-    /* This function does nothing but it could have been a good place to
-     * handle game reset states - maybe a new game menu or a game over screen
-     * those sorts of things. It's only called once by the init() method.
+    /* This function loads elements to handle pre-game menu that loads all possible player character to choose from. Also it generates Article element with explanations on how to play the game.
      */
     function reset() {
         //store character images into DOM
@@ -197,8 +193,8 @@ var Engine = (function(global) {
         allPlayers.forEach(function(item){
             charImage = document.createElement("IMG");
             charImage.setAttribute("src", item.sprite);
-
             list.appendChild(charImage);
+
             charImage.onclick = function() {
                 player.sprite = item.sprite;
                 list.style.display = "none";
@@ -208,16 +204,15 @@ var Engine = (function(global) {
         });
 
         list.appendChild(article);
-    };
+    }
 
     function checkCollisions() {
         allEnemies.forEach(function(enemy) {
             enemy.checkCollisions();
         });
-        // allLoot.forEach(function(loot) {
-            loot.checkCollisions();
-        // });
-    };
+
+        loot.checkCollisions();
+    }
 
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
