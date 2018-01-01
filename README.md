@@ -1,5 +1,4 @@
-
-# About Project
+# Classic Arcade Game Clone (Udacity Front-End Project 4)
 
 This project is created within Udacity's Front End NanoDegree course. Applied **OOP Javascript paradigm** to recreate old arcade game called Frogger.
 
